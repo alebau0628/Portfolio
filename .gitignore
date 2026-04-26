@@ -1,0 +1,10 @@
+# Sensitive personal documents — keep these out of the public repo
+project/uploads/*.pdf
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/

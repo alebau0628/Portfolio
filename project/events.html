@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events — Ale Bautista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background:#fff; color:#111; font-family:'Inter', sans-serif; font-weight:300; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; background:#fff; border-bottom:1px solid #eee; z-index:100; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 40px; }
+  .nav-logo { font-family:'Bebas Neue', sans-serif; font-size:22px; letter-spacing:0.08em; }
+  .nav-links { display:flex; gap:36px; }
+  .nav-links a { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#111; padding-bottom:4px; border-bottom:2px solid transparent; }
+  .nav-links a:hover { text-decoration: underline; text-underline-offset: 6px; }
+  .nav-links a.active { border-bottom: 2px solid #111; }
+  .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+  .hamburger span { width:22px; height:1.5px; background:#111; }
+  @media (max-width:720px) {
+    .nav { padding: 0 20px; }
+    .nav-links { position:absolute; top:64px; left:0; right:0; background:#fff; flex-direction:column; gap:0; border-bottom:1px solid #eee; max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+    .nav-links.open { max-height: 320px; }
+    .nav-links a { padding:18px 20px; border-bottom:1px solid #f4f4f4; }
+    .nav-links a.active { border-bottom: 1px solid #f4f4f4; background: #fafafa; }
+    .hamburger { display: flex; }
+  }
+
+  main { padding-top: 64px; }
+
+  /* MASTHEAD */
+  .masthead {
+    padding: 120px 40px 60px;
+    border-bottom: 1px solid #eee;
+  }
+  .masthead h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 18vw, 280px);
+    letter-spacing: 0.01em;
+    line-height: 0.85;
+    margin-bottom: 24px;
+  }
+  .masthead .sub {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #999;
+  }
+  @media (max-width: 540px) { .masthead { padding: 90px 20px 40px; } }
+
+  /* EVENTS */
+  .events { padding: 80px 0 0 0; }
+  .event {
+    margin-bottom: 80px;
+  }
+  .event:last-child { margin-bottom: 0; }
+  .event-image {
+    width: 100%; height: 60vh;
+    overflow: hidden;
+    background: #f4f4f4;
+  }
+  .event-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 0.6s ease;
+  }
+  .event:hover .event-image img { transform: scale(1.02); }
+  .event-meta {
+    padding: 24px 40px 0;
+    max-width: 880px;
+  }
+  .event-meta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px; letter-spacing: 0.04em; line-height: 1;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  .event-meta .where {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #999; margin-bottom: 14px;
+  }
+  .event-meta .desc {
+    font-size: 15px; line-height: 1.7; color: #444;
+    max-width: 640px;
+  }
+  @media (max-width: 540px) {
+    .event-image { height: 45vh; }
+    .event-meta { padding: 20px 20px 0; }
+    .event-meta h2 { font-size: 30px; }
+    .event { margin-bottom: 64px; }
+  }
+
+  /* FOOTER */
+  footer { border-top:1px solid #eee; padding:80px 24px 60px; text-align:center; margin-top: 120px; }
+  footer .f-links { display:flex; justify-content:center; gap:24px; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:#444; margin-bottom:18px; flex-wrap: wrap; }
+  footer .f-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  footer .f-meta { font-size:11px; letter-spacing:0.15em; color:#999; text-transform:uppercase; }
+  footer .dot { color: #ccc; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ALE BAUTISTA</a>
+  <button class="hamburger" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navlinks">
+    <a href="index.html">Overview</a>
+    <a href="collage.html">Collage</a>
+    <a href="studio.html">Studio</a>
+    <a href="events.html" class="active">Events</a>
+    <a href="design.html">Design</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <header class="masthead">
+    <h1>EVENTS</h1>
+    <div class="sub">Brisbane · Bogotá · 2016—2024</div>
+  </header>
+
+  <div class="events">
+    <article class="event">
+      <div class="event-image"><img src="https://picsum.photos/seed/e1/1400/800?grayscale" alt="" loading="lazy" /></div>
+      <div class="event-meta">
+        <h2>Mundo Lingo Social Night</h2>
+        <div class="where">Brisbane · 2019</div>
+        <p class="desc">Weekly language exchange event — candid portraits and crowd energy.</p>
+      </div>
+    </article>
+
+    <article class="event">
+      <div class="event-image"><img src="https://picsum.photos/seed/e2/1400/800?grayscale" alt="" loading="lazy" /></div>
+      <div class="event-meta">
+        <h2>Streets Imaging Client Launch</h2>
+        <div class="where">Brisbane · 2023</div>
+        <p class="desc">Product launch event — visual coverage from set-up to final shot.</p>
+      </div>
+    </article>
+
+    <article class="event">
+      <div class="event-image"><img src="https://picsum.photos/seed/e3/1400/800?grayscale" alt="" loading="lazy" /></div>
+      <div class="event-meta">
+        <h2>Politecnico Cultural Festival</h2>
+        <div class="where">Bogotá · 2016</div>
+        <p class="desc">University cultural event — editorial photography for print &amp; web.</p>
+      </div>
+    </article>
+
+    <article class="event">
+      <div class="event-image"><img src="https://picsum.photos/seed/e4/1400/800?grayscale" alt="" loading="lazy" /></div>
+      <div class="event-meta">
+        <h2>Brisbane Photography Exhibition</h2>
+        <div class="where">Brisbane · 2022</div>
+        <p class="desc">Group exhibition at TAFE Queensland — documentary series showcase.</p>
+      </div>
+    </article>
+
+    <article class="event">
+      <div class="event-image"><img src="https://picsum.photos/seed/e5/1400/800?grayscale" alt="" loading="lazy" /></div>
+      <div class="event-meta">
+        <h2>Community Market Day</h2>
+        <div class="where">Coorparoo · 2023</div>
+        <p class="desc">Street-style coverage of a local community market event.</p>
+      </div>
+    </article>
+
+    <article class="event">
+      <div class="event-image"><img src="https://picsum.photos/seed/e6/1400/800?grayscale" alt="" loading="lazy" /></div>
+      <div class="event-meta">
+        <h2>QUT Graduation Ceremony</h2>
+        <div class="where">Brisbane · 2024</div>
+        <p class="desc">Event photography commissioned for graduation celebration.</p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="f-links">
+    <a href="mailto:alebau0628@gmail.com">alebau0628@gmail.com</a>
+    <span class="dot">·</span>
+    <a href="https://www.instagram.com/0628ale/" target="_blank" rel="noopener">Instagram</a>
+    <span class="dot">·</span>
+    <a href="https://www.linkedin.com/in/alejandra-bautista-duarte-21b8941a8/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="f-meta">© 2026 Ale Bautista · Brisbane, AU</div>
+</footer>
+
+</body>
+</html>

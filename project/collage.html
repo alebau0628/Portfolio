@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Collage — Ale Bautista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #ffffff; color: #111111;
+    font-family: 'Inter', sans-serif; font-weight: 300;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; background:#fff; border-bottom:1px solid #eee; z-index:100; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 40px; }
+  .nav-logo { font-family:'Bebas Neue', sans-serif; font-size:22px; letter-spacing:0.08em; }
+  .nav-links { display:flex; gap:36px; }
+  .nav-links a { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#111; padding-bottom:4px; border-bottom:2px solid transparent; }
+  .nav-links a:hover { text-decoration: underline; text-underline-offset: 6px; }
+  .nav-links a.active { border-bottom: 2px solid #111; }
+  .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+  .hamburger span { width:22px; height:1.5px; background:#111; }
+  @media (max-width:720px) {
+    .nav { padding: 0 20px; }
+    .nav-links { position:absolute; top:64px; left:0; right:0; background:#fff; flex-direction:column; gap:0; border-bottom:1px solid #eee; max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+    .nav-links.open { max-height: 320px; }
+    .nav-links a { padding:18px 20px; border-bottom:1px solid #f4f4f4; }
+    .nav-links a.active { border-bottom: 1px solid #f4f4f4; background: #fafafa; }
+    .hamburger { display: flex; }
+  }
+
+  main { padding-top: 64px; }
+
+  /* MASTHEAD */
+  .masthead {
+    padding: 120px 40px 60px;
+    border-bottom: 1px solid #eee;
+  }
+  .masthead h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 18vw, 280px);
+    letter-spacing: 0.01em;
+    line-height: 0.85;
+    margin-bottom: 24px;
+  }
+  .masthead .sub {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #999;
+  }
+
+  /* FILTER BAR */
+  .filters {
+    display: flex; gap: 36px; flex-wrap: wrap;
+    padding: 36px 40px;
+    border-bottom: 1px solid #eee;
+  }
+  .filter-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #999;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .filter-btn:hover { color: #111; }
+  .filter-btn.active { color: #111; border-bottom: 1px solid #111; }
+
+  /* FEATURED — 4 collages, full color, large portrait tiles */
+  .featured-intro {
+    padding: 60px 40px 24px;
+    display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap;
+  }
+  .featured-intro .lbl {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #999;
+  }
+  .featured-intro .ttl {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px; letter-spacing: 0.04em;
+  }
+
+  .featured {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    padding: 0 40px 40px;
+  }
+  .feat {
+    position: relative;
+    aspect-ratio: 5 / 7;
+    overflow: hidden;
+    background: #f4f4f4;
+  }
+  .feat img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .feat:hover img { transform: scale(1.03); }
+  .feat-meta {
+    padding: 18px 4px 0;
+  }
+  .feat-meta .name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 0.03em; line-height: 1.05;
+    margin-bottom: 4px;
+  }
+  .feat-meta .sub {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #999;
+  }
+  .feat-wrap { display: flex; flex-direction: column; }
+
+  @media (max-width: 720px) {
+    .featured { grid-template-columns: 1fr; padding: 0 20px 24px; }
+    .featured-intro { padding: 40px 20px 12px; }
+    .featured-intro .ttl { font-size: 32px; }
+  }
+
+  /* PHOTO GRID — contact sheet, no gap */
+  .grid-intro {
+    padding: 60px 40px 24px;
+    border-top: 1px solid #eee;
+    display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap;
+  }
+  .grid-intro .lbl {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #999;
+  }
+  .grid-intro .ttl {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px; letter-spacing: 0.04em;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .tile {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f4f4f4;
+  }
+  .tile img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 0.6s ease;
+  }
+  .tile:hover img { transform: scale(1.04); }
+  .tile-overlay {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0));
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    color: #fff;
+  }
+  .tile:hover .tile-overlay { transform: translateY(0); }
+  .tile-overlay .ttl {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; letter-spacing: 0.04em; line-height: 1.05;
+  }
+  .tile-overlay .cat {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); margin-top: 6px;
+  }
+  .tile.hidden { display: none; }
+  .feat-wrap.hidden { display: none; }
+
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) {
+    .grid { grid-template-columns: 1fr; }
+    .masthead { padding: 90px 20px 40px; }
+    .filters { padding: 24px 20px; gap: 20px; }
+    .grid-intro { padding: 40px 20px 12px; }
+    .grid-intro .ttl { font-size: 32px; }
+  }
+
+  /* FOOTER */
+  footer { border-top:1px solid #eee; padding:80px 24px 60px; text-align:center; margin-top: 60px; }
+  footer .f-links { display:flex; justify-content:center; gap:24px; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:#444; margin-bottom:18px; flex-wrap: wrap; }
+  footer .f-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  footer .f-meta { font-size:11px; letter-spacing:0.15em; color:#999; text-transform:uppercase; }
+  footer .dot { color: #ccc; }
+
+  /* INTRO VIDEO OVERLAY */
+  .intro-overlay {
+    position: fixed; inset: 0;
+    background: rgba(15, 15, 18, 0.55);
+    backdrop-filter: blur(18px) saturate(1.1);
+    -webkit-backdrop-filter: blur(18px) saturate(1.1);
+    z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 1;
+    transition: opacity 1.2s ease, backdrop-filter 1.2s ease;
+  }
+  .intro-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  .intro-overlay video {
+    width: auto;
+    height: 85vh;
+    max-width: calc(85vh * 0.707); /* A4 ratio 1:√2 */
+    aspect-ratio: 1 / 1.414;
+    object-fit: cover;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  }
+  @media (max-width: 760px) {
+    .intro-overlay video {
+      height: auto;
+      width: 88vw;
+      max-width: 88vw;
+    }
+  }
+  .intro-close {
+    position: absolute;
+    top: 24px; right: 28px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 12px 22px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .intro-close:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.5);
+  }
+  .intro-label {
+    position: absolute;
+    bottom: 32px; left: 32px;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+  }
+  body.intro-active { overflow: hidden; }
+  @media (max-width: 760px) {
+    .intro-close { top: 16px; right: 16px; padding: 10px 16px; font-size: 10px; }
+    .intro-label { bottom: 20px; left: 20px; font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ALE BAUTISTA</a>
+  <button class="hamburger" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navlinks">
+    <a href="index.html">Overview</a>
+    <a href="collage.html" class="active">Collage</a>
+    <a href="studio.html">Studio</a>
+    <a href="events.html">Events</a>
+    <a href="design.html">Design</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <header class="masthead">
+    <h1>COLLAGE</h1>
+    <div class="sub">Mixed-media collage &amp; photographic work</div>
+  </header>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+  </div>
+
+  <!-- FEATURED COLLAGES -->
+  <div class="featured-intro" id="featuredIntro">
+    <span class="lbl">— 01</span>
+    <span class="ttl">Mixed-Media Collage</span>
+  </div>
+
+  <div class="featured" id="featured">
+    <div class="feat-wrap" data-category="collage">
+      <div class="feat">
+        <img src="images/collage-01-yellow.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <div class="name">Te Lo Digo de Una Vez</div>
+        <div class="sub">Typographic Collage · 2023</div>
+      </div>
+    </div>
+    <div class="feat-wrap" data-category="collage">
+      <div class="feat">
+        <img src="images/collage-02-blue.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <div class="name">Another Space</div>
+        <div class="sub">Album Cover · 2022</div>
+      </div>
+    </div>
+    <div class="feat-wrap" data-category="collage">
+      <div class="feat">
+        <img src="images/collage-03-jupiter.png" alt="" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <div class="name">Jupiter Bloom</div>
+        <div class="sub">Mixed Media · 2022</div>
+      </div>
+    </div>
+    <div class="feat-wrap" data-category="collage">
+      <div class="feat">
+        <img src="images/collage-04-geisha.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <div class="name">Eien ni Katsu</div>
+        <div class="sub">Editorial Collage · 2023</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="f-links">
+    <a href="mailto:alebau0628@gmail.com">alebau0628@gmail.com</a>
+    <span class="dot">·</span>
+    <a href="https://www.instagram.com/0628ale/" target="_blank" rel="noopener">Instagram</a>
+    <span class="dot">·</span>
+    <a href="https://www.linkedin.com/in/alejandra-bautista-duarte-21b8941a8/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="f-meta">© 2026 Ale Bautista · Brisbane, AU</div>
+</footer>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const feats = document.querySelectorAll('.feat-wrap');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      feats.forEach(t => {
+        if (f === 'all' || t.dataset.category === f) t.classList.remove('hidden');
+        else t.classList.add('hidden');
+      });
+    });
+  });
+</script>
+</body>
+</html>

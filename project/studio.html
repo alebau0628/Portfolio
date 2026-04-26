@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio — Ale Bautista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background:#fff; color:#111; font-family:'Inter', sans-serif; font-weight:300; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; background:#fff; border-bottom:1px solid #eee; z-index:100; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 40px; }
+  .nav-logo { font-family:'Bebas Neue', sans-serif; font-size:22px; letter-spacing:0.08em; }
+  .nav-links { display:flex; gap:32px; }
+  .nav-links a { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#111; padding-bottom:4px; border-bottom:2px solid transparent; }
+  .nav-links a:hover { text-decoration: underline; text-underline-offset: 6px; }
+  .nav-links a.active { border-bottom: 2px solid #111; }
+  .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+  .hamburger span { width:22px; height:1.5px; background:#111; }
+  @media (max-width:820px) {
+    .nav { padding: 0 20px; }
+    .nav-links { position:absolute; top:64px; left:0; right:0; background:#fff; flex-direction:column; gap:0; border-bottom:1px solid #eee; max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+    .nav-links.open { max-height: 420px; }
+    .nav-links a { padding:18px 20px; border-bottom:1px solid #f4f4f4; }
+    .nav-links a.active { border-bottom: 1px solid #f4f4f4; background: #fafafa; }
+    .hamburger { display: flex; }
+  }
+
+  main { padding-top: 64px; }
+
+  /* MASTHEAD */
+  .masthead { padding: 120px 40px 60px; border-bottom: 1px solid #eee; }
+  .masthead h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(80px, 18vw, 280px); letter-spacing: 0.01em; line-height: 0.85; margin-bottom: 24px; }
+  .masthead .sub { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #999; }
+  @media (max-width: 540px) { .masthead { padding: 90px 20px 40px; } }
+
+  /* SERIES — each subject is its own block */
+  .series {
+    padding: 100px 40px 0;
+  }
+  .series-head {
+    display: flex; align-items: baseline; gap: 28px;
+    margin-bottom: 44px;
+    flex-wrap: wrap;
+  }
+  .series-head .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; color: #999; letter-spacing: 0.1em;
+  }
+  .series-head h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; letter-spacing: 0.04em; line-height: 1;
+    font-weight: 400;
+  }
+  .series-head .meta {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #999;
+    margin-left: auto;
+  }
+  .series-desc {
+    font-size: 15px; line-height: 1.7; color: #555;
+    max-width: 560px;
+    margin: -24px 0 44px;
+  }
+
+  /* Layout variants per series */
+  .layout-3 {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 8px;
+  }
+  .layout-3 .frame:first-child { grid-row: span 2; aspect-ratio: 4/5; }
+  .layout-3 .frame { aspect-ratio: 4/5; }
+
+  .layout-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .layout-row .frame { aspect-ratio: 3/4; }
+
+  .layout-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .layout-pair .frame { aspect-ratio: 3/4; }
+
+  .layout-wide {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 8px;
+  }
+  .layout-wide .frame { aspect-ratio: 3/4; }
+  .layout-wide .frame.wide { aspect-ratio: 4/3; }
+
+  .frame {
+    overflow: hidden;
+    background: #f4f4f4;
+    position: relative;
+  }
+  .frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .frame:hover img { transform: scale(1.03); }
+
+  @media (max-width: 820px) {
+    .series { padding: 70px 20px 0; }
+    .series-head h2 { font-size: 44px; }
+    .series-head .meta { margin-left: 0; }
+    .layout-3, .layout-row, .layout-pair, .layout-wide {
+      grid-template-columns: 1fr 1fr;
+    }
+    .layout-3 .frame:first-child { grid-row: auto; grid-column: span 2; aspect-ratio: 4/3; }
+    .layout-wide .frame.wide { grid-column: span 2; }
+  }
+  @media (max-width: 480px) {
+    .layout-3, .layout-row, .layout-pair, .layout-wide {
+      grid-template-columns: 1fr;
+    }
+    .layout-3 .frame:first-child { grid-column: auto; aspect-ratio: 4/5; }
+    .layout-wide .frame.wide { grid-column: auto; }
+  }
+
+  /* FOOTER */
+  footer { border-top:1px solid #eee; padding:80px 24px 60px; text-align:center; margin-top: 140px; }
+  footer .f-links { display:flex; justify-content:center; gap:24px; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:#444; margin-bottom:18px; flex-wrap: wrap; }
+  footer .f-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  footer .f-meta { font-size:11px; letter-spacing:0.15em; color:#999; text-transform:uppercase; }
+  footer .dot { color: #ccc; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ALE BAUTISTA</a>
+  <button class="hamburger" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navlinks">
+    <a href="index.html">Overview</a>
+    <a href="collage.html">Collage</a>
+    <a href="studio.html" class="active">Studio</a>
+    <a href="events.html">Events</a>
+    <a href="design.html">Design</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <header class="masthead">
+    <h1>STUDIO</h1>
+    <div class="sub">Portrait sessions — controlled light, pure subject</div>
+  </header>
+
+  <!-- NATHALIE -->
+  <section class="series">
+    <div class="series-head">
+      <span class="num">— 01</span>
+      <h2>Nathalie</h2>
+      <span class="meta">Editorial Portrait · 2023</span>
+    </div>
+    <p class="series-desc">A study in texture and stillness — woven headpiece, brass jewellery, and high-key studio light against a soft grey ground.</p>
+    <div class="layout-3">
+      <div class="frame"><img src="images/studio/nathalie-1.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/nathalie-2.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/nathalie-3.jpg" alt="" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- KATE -->
+  <section class="series">
+    <div class="series-head">
+      <span class="num">— 02</span>
+      <h2>Kate</h2>
+      <span class="meta">Athlete Portrait · 2023</span>
+    </div>
+    <p class="series-desc">Black-and-white sports series — directional light shaping form and motion. Shot on a single backdrop, no retouching beyond contrast and grain.</p>
+    <div class="layout-row">
+      <div class="frame"><img src="images/studio/kate-1.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/kate-2.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/kate-3.jpg" alt="" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- KARL -->
+  <section class="series">
+    <div class="series-head">
+      <span class="num">— 03</span>
+      <h2>Karl</h2>
+      <span class="meta">Athlete Portrait · 2023</span>
+    </div>
+    <p class="series-desc">Strength sequence — kettlebell, stance, breath. The set was lit with a single key and a feathered fill to keep edges sharp without losing midtones.</p>
+    <div class="layout-row">
+      <div class="frame"><img src="images/studio/karl-1.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/karl-2.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/karl-3.jpg" alt="" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- HEATHER -->
+  <section class="series">
+    <div class="series-head">
+      <span class="num">— 04</span>
+      <h2>Heather</h2>
+      <span class="meta">Character Portrait · 2022</span>
+    </div>
+    <p class="series-desc">A short narrative series — the photographer becomes the subject. Hat, coat, camera, smoke. Cinematic black with controlled fill.</p>
+    <div class="layout-pair">
+      <div class="frame"><img src="images/studio/heather-1.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/heather-2.jpg" alt="" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- PIERRE -->
+  <section class="series">
+    <div class="series-head">
+      <span class="num">— 05</span>
+      <h2>Pierre</h2>
+      <span class="meta">Studio Portrait · 2022</span>
+    </div>
+    <p class="series-desc">Three-frame portrait sitting — angel wings, a wide-brim hat, and a full-length figure study. High-key on white seamless.</p>
+    <div class="layout-wide">
+      <div class="frame wide"><img src="images/studio/pierre-1.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/pierre-2.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/pierre-3.jpg" alt="" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- SIHLE -->
+  <section class="series">
+    <div class="series-head">
+      <span class="num">— 06</span>
+      <h2>Sihle</h2>
+      <span class="meta">Athlete Portrait · 2024</span>
+    </div>
+    <p class="series-desc">Painterly backdrop with hard key light — basketball as a still-life prop, posture as a frame. One color frame, two in monochrome.</p>
+    <div class="layout-row">
+      <div class="frame"><img src="images/studio/sihle-1.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/sihle-2.jpg" alt="" loading="lazy" /></div>
+      <div class="frame"><img src="images/studio/sihle-3.jpg" alt="" loading="lazy" /></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="f-links">
+    <a href="mailto:alebau0628@gmail.com">alebau0628@gmail.com</a>
+    <span class="dot">·</span>
+    <a href="https://www.instagram.com/0628ale/" target="_blank" rel="noopener">Instagram</a>
+    <span class="dot">·</span>
+    <a href="https://www.linkedin.com/in/alejandra-bautista-duarte-21b8941a8/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="f-meta">© 2026 Ale Bautista · Brisbane, AU</div>
+</footer>
+
+</body>
+</html>
