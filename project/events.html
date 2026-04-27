@@ -95,6 +95,29 @@
     .event { margin-bottom: 64px; }
   }
 
+  /* GALLERY */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 80px 8px 40px;
+  }
+  .gallery .cell {
+    display: block;
+    overflow: hidden;
+    background: #f4f4f4;
+    aspect-ratio: 4/3;
+  }
+  .gallery img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.6s ease;
+  }
+  .gallery .cell:hover img { filter: grayscale(0%); }
+  @media (max-width: 900px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .gallery { grid-template-columns: 1fr; gap: 4px; padding: 60px 4px 24px; } }
+
   /* FOOTER */
   footer { border-top:1px solid #eee; padding:80px 24px 60px; text-align:center; margin-top: 120px; }
   footer .f-links { display:flex; justify-content:center; gap:24px; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:#444; margin-bottom:18px; flex-wrap: wrap; }
@@ -123,63 +146,63 @@
 <main>
   <header class="masthead">
     <h1>EVENTS</h1>
-    <div class="sub">Brisbane · Bogotá · 2016—2024</div>
+    <div class="sub">Mundo Lingo · Brisbane · 2018—2019</div>
   </header>
 
   <div class="events">
     <article class="event">
-      <div class="event-image"><img src="https://picsum.photos/seed/e1/1400/800?grayscale" alt="" loading="lazy" /></div>
+      <div class="event-image"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_23.JPG" alt="Mundo Lingo Social Night — Brisbane" loading="lazy" /></div>
       <div class="event-meta">
-        <h2>Mundo Lingo Social Night</h2>
-        <div class="where">Brisbane · 2019</div>
-        <p class="desc">Weekly language exchange event — candid portraits and crowd energy.</p>
+        <h2>Mundo Lingo Social Nights</h2>
+        <div class="where">Brisbane · 2018—2019</div>
+        <p class="desc">Weekly language-exchange events at Brisbane venues — candid portraits and crowd energy supporting 40%+ audience engagement growth across the official social channels.</p>
       </div>
     </article>
+  </div>
 
-    <article class="event">
-      <div class="event-image"><img src="https://picsum.photos/seed/e2/1400/800?grayscale" alt="" loading="lazy" /></div>
-      <div class="event-meta">
-        <h2>Streets Imaging Client Launch</h2>
-        <div class="where">Brisbane · 2023</div>
-        <p class="desc">Product launch event — visual coverage from set-up to final shot.</p>
-      </div>
-    </article>
-
-    <article class="event">
-      <div class="event-image"><img src="https://picsum.photos/seed/e3/1400/800?grayscale" alt="" loading="lazy" /></div>
-      <div class="event-meta">
-        <h2>Politecnico Cultural Festival</h2>
-        <div class="where">Bogotá · 2016</div>
-        <p class="desc">University cultural event — editorial photography for print &amp; web.</p>
-      </div>
-    </article>
-
-    <article class="event">
-      <div class="event-image"><img src="https://picsum.photos/seed/e4/1400/800?grayscale" alt="" loading="lazy" /></div>
-      <div class="event-meta">
-        <h2>Brisbane Photography Exhibition</h2>
-        <div class="where">Brisbane · 2022</div>
-        <p class="desc">Group exhibition at TAFE Queensland — documentary series showcase.</p>
-      </div>
-    </article>
-
-    <article class="event">
-      <div class="event-image"><img src="https://picsum.photos/seed/e5/1400/800?grayscale" alt="" loading="lazy" /></div>
-      <div class="event-meta">
-        <h2>Community Market Day</h2>
-        <div class="where">Coorparoo · 2023</div>
-        <p class="desc">Street-style coverage of a local community market event.</p>
-      </div>
-    </article>
-
-    <article class="event">
-      <div class="event-image"><img src="https://picsum.photos/seed/e6/1400/800?grayscale" alt="" loading="lazy" /></div>
-      <div class="event-meta">
-        <h2>QUT Graduation Ceremony</h2>
-        <div class="where">Brisbane · 2024</div>
-        <p class="desc">Event photography commissioned for graduation celebration.</p>
-      </div>
-    </article>
+  <div class="gallery">
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking.jpg" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking%20%283%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking2222.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_0555.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_1.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_1%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_1%20%283%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_2.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_3.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_5.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_5%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_7.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_8.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_8%20%283%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_9.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_10.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_10%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_10%20%283%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_13.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_13%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_13%20%283%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_14.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_15.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_15%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_17.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_17%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_19.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_20.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_20%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_21.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_21%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_21%20%283%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_21%20%284%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_22.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_22%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_22%20%283%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_22%20%284%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_22%20%285%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_23%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_24.JPG" alt="Mundo Lingo" loading="lazy" /></div>
+    <div class="cell"><img src="uploads/Mundo%20Lingo/Mundo%20Lingo%20Watermarking_24%20%282%29.JPG" alt="Mundo Lingo" loading="lazy" /></div>
   </div>
 </main>
 
