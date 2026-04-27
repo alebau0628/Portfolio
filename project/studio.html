@@ -83,14 +83,14 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
-  .layout-row .frame { aspect-ratio: 3/4; }
+  .layout-row .frame { aspect-ratio: 2/3; }
 
   .layout-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-  .layout-pair .frame { aspect-ratio: 3/4; }
+  .layout-pair .frame { aspect-ratio: 2/3; }
 
   .layout-wide {
     display: grid;
@@ -101,7 +101,9 @@
   .layout-wide .frame.wide { aspect-ratio: 4/3; }
 
   .layout-mix { display: grid; grid-template-columns: 1fr; gap: 8px; }
-  .layout-mix .row-2 { display: grid; grid-template-columns: 9fr 4fr; gap: 8px; }
+  .layout-mix .row-2 { display: grid; gap: 8px; }
+  .layout-mix .row-2.lp { grid-template-columns: 9fr 4fr; }
+  .layout-mix .row-2.pp { grid-template-columns: 1fr 1fr; }
   .layout-mix .frame.land { aspect-ratio: 3/2; }
   .layout-mix .frame.port { aspect-ratio: 2/3; }
 
@@ -177,7 +179,7 @@
     <p class="series-desc">A study in texture and stillness — woven headpiece, brass jewellery, and high-key studio light against a soft grey ground.</p>
     <div class="layout-mix">
       <div class="frame land"><img src="images/studio/nathalie-1.jpg" alt="" loading="lazy" /></div>
-      <div class="row-2">
+      <div class="row-2 lp">
         <div class="frame land"><img src="images/studio/nathalie-2.jpg" alt="" loading="lazy" /></div>
         <div class="frame port"><img src="images/studio/nathalie-3.jpg" alt="" loading="lazy" /></div>
       </div>
@@ -192,10 +194,12 @@
       <span class="meta">Athlete Portrait · 2023</span>
     </div>
     <p class="series-desc">Black-and-white sports series — directional light shaping form and motion. Shot on a single backdrop, no retouching beyond contrast and grain.</p>
-    <div class="layout-row">
-      <div class="frame"><img src="images/studio/kate-1.jpg" alt="" loading="lazy" /></div>
-      <div class="frame"><img src="images/studio/kate-2.jpg" alt="" loading="lazy" /></div>
-      <div class="frame"><img src="images/studio/kate-3.jpg" alt="" loading="lazy" /></div>
+    <div class="layout-mix">
+      <div class="frame land"><img src="images/studio/kate-3.jpg" alt="" loading="lazy" /></div>
+      <div class="row-2 pp">
+        <div class="frame port"><img src="images/studio/kate-1.jpg" alt="" loading="lazy" /></div>
+        <div class="frame port"><img src="images/studio/kate-2.jpg" alt="" loading="lazy" /></div>
+      </div>
     </div>
   </section>
 
@@ -207,10 +211,12 @@
       <span class="meta">Athlete Portrait · 2023</span>
     </div>
     <p class="series-desc">Strength sequence — kettlebell, stance, breath. The set was lit with a single key and a feathered fill to keep edges sharp without losing midtones.</p>
-    <div class="layout-row">
-      <div class="frame"><img src="images/studio/karl-1.jpg" alt="" loading="lazy" /></div>
-      <div class="frame"><img src="images/studio/karl-2.jpg" alt="" loading="lazy" /></div>
-      <div class="frame"><img src="images/studio/karl-3.jpg" alt="" loading="lazy" /></div>
+    <div class="layout-mix">
+      <div class="frame land"><img src="images/studio/karl-1.jpg" alt="" loading="lazy" /></div>
+      <div class="row-2 pp">
+        <div class="frame port"><img src="images/studio/karl-2.jpg" alt="" loading="lazy" /></div>
+        <div class="frame port"><img src="images/studio/karl-3.jpg" alt="" loading="lazy" /></div>
+      </div>
     </div>
   </section>
 
