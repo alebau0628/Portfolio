@@ -100,6 +100,11 @@
   .layout-wide .frame { aspect-ratio: 3/4; }
   .layout-wide .frame.wide { aspect-ratio: 4/3; }
 
+  .layout-mix { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .layout-mix .row-2 { display: grid; grid-template-columns: 9fr 4fr; gap: 8px; }
+  .layout-mix .frame.land { aspect-ratio: 3/2; }
+  .layout-mix .frame.port { aspect-ratio: 2/3; }
+
   .frame {
     overflow: hidden;
     background: #f4f4f4;
@@ -128,6 +133,7 @@
     }
     .layout-3 .frame:first-child { grid-column: auto; aspect-ratio: 4/5; }
     .layout-wide .frame.wide { grid-column: auto; }
+    .layout-mix .row-2 { grid-template-columns: 1fr; }
   }
 
   /* FOOTER */
@@ -169,10 +175,12 @@
       <span class="meta">Editorial Portrait · 2023</span>
     </div>
     <p class="series-desc">A study in texture and stillness — woven headpiece, brass jewellery, and high-key studio light against a soft grey ground.</p>
-    <div class="layout-3">
-      <div class="frame"><img src="images/studio/nathalie-1.jpg" alt="" loading="lazy" /></div>
-      <div class="frame"><img src="images/studio/nathalie-2.jpg" alt="" loading="lazy" /></div>
-      <div class="frame"><img src="images/studio/nathalie-3.jpg" alt="" loading="lazy" /></div>
+    <div class="layout-mix">
+      <div class="frame land"><img src="images/studio/nathalie-1.jpg" alt="" loading="lazy" /></div>
+      <div class="row-2">
+        <div class="frame land"><img src="images/studio/nathalie-2.jpg" alt="" loading="lazy" /></div>
+        <div class="frame port"><img src="images/studio/nathalie-3.jpg" alt="" loading="lazy" /></div>
+      </div>
     </div>
   </section>
 
